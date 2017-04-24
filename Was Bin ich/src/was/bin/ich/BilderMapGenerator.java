@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.image.Image;
 
@@ -42,6 +43,20 @@ public class BilderMapGenerator {
         
         
         return hm;
+    }
+    
+    ArrayList namen() throws FileNotFoundException, IOException{
+        ArrayList<String> namen = new ArrayList<>();
+        File f = new File("kathegorien/kathegorien");
+        FileReader fr = new FileReader(f);
+        BufferedReader bfr = new BufferedReader(fr);
+        String text = bfr.readLine();
+        while (text != null || text != "") {
+            namen.add(text);
+            text = bfr.readLine();
+        }
+        
+        return namen;
     }
     
 }
