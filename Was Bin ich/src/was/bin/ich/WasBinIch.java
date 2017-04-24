@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,11 +27,16 @@ public class WasBinIch extends Application {
     public void start(Stage primaryStage) {
         Group root = new Group();
         Scene theScene = new Scene(root);
-        Canvas canvas = new Canvas(500,500);
+        primaryStage.setScene(theScene);
+        Canvas canvas = new Canvas(1000,500);
         root.getChildren().add(canvas);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        
         primaryStage.show();
+        
+        gc.drawImage(new Image("resources/image.png",theScene.getWidth(),theScene.getHeight(),false,false), 0, 0);
+        
+        
+        
     }
 
     /**
