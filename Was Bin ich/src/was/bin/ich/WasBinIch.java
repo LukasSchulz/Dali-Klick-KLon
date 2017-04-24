@@ -33,7 +33,14 @@ public class WasBinIch extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         primaryStage.show();
         
-        gc.drawImage(new Image("resources/image.png",theScene.getWidth(),theScene.getHeight(),false,false), 0, 0);
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
