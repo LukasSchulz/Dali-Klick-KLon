@@ -79,6 +79,7 @@ public class WasBinIch extends Application {
         table.getColumns().addAll(new TableColumn("Kathegorie"));
         table.setEditable(false);
         ObservableList<String> kathegorien = FXCollections.observableArrayList();
+        //sorry für die lokale Variable, wollte aber etwas testen......
         File f = new File("C:\\Users\\Lukas Schulz\\Documents\\NetBeansProjects\\Was_bin_ich\\Was Bin ich\\src\\kathegorien\\kathegorien");
         FileReader fr = new FileReader(f);
         BufferedReader bfr = new BufferedReader(fr);
