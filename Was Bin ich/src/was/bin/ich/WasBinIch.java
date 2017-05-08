@@ -88,7 +88,11 @@ public class WasBinIch extends Application {
         
         
         //sorry für die lokale Variable, wollte aber etwas testen......
-        File f = new File("/Was bin Ich/src/kathegorien/kathegorien");
+        File f = new File("/src/kathegorien/kathegorien");
+        if(!f.exists()){
+            f.mkdirs();
+            f.createNewFile();
+        }
         FileReader fr = new FileReader(f);
         BufferedReader bfr = new BufferedReader(fr);
         String text = bfr.readLine();
