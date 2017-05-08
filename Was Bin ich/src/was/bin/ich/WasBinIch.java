@@ -128,7 +128,7 @@ public class WasBinIch extends Application {
         FileReader fr = new FileReader(f);
         BufferedReader bfr = new BufferedReader(fr);
         String text = bfr.readLine();
-        while (text != null || text != "") {
+        while (text != null && text != "") {
             String[] teile = text.split("|");
             Image img = new Image(name + "/" + teile[0]);
             String resttext = "";
@@ -150,7 +150,7 @@ public class WasBinIch extends Application {
         FileReader fr = new FileReader(f);
         BufferedReader bfr = new BufferedReader(fr);
         String text = bfr.readLine();
-        while (text != null || text != "") {
+        while (text != null && text != "") {
             namen.add(text);
             text = bfr.readLine();
         }
