@@ -74,29 +74,70 @@ public class WasBinIch extends Application {
     public void loadArray(Stage theStage) throws FileNotFoundException, IOException{
         
         Scene pick = new Scene(new Group());
+        /**
+         * Hab was mit ner Table ausprobiert
+         * hat nicht funktioniert
+         * Jetzt mach ich ne Menulist
+         */
         
-        TableView table = new TableView();
-        table.getColumns().addAll(new TableColumn("Kathegorie"));
-        table.setEditable(false);
-        ObservableList<String> kathegorien = FXCollections.observableArrayList();
+        
         //sorry für die lokale Variable, wollte aber etwas testen......
         File f = new File("C:\\Users\\Lukas Schulz\\Documents\\NetBeansProjects\\Was_bin_ich\\Was Bin ich\\src\\kathegorien\\kathegorien");
         FileReader fr = new FileReader(f);
         BufferedReader bfr = new BufferedReader(fr);
         String text = bfr.readLine();
         while(text!=""&&text!=null){
-            kathegorien.add(text);
+            
             text = bfr.readLine();
         }
-        table.setItems(kathegorien);
-        VBox vbox = new VBox();
         
-        vbox.getChildren().addAll(table);
-        ((Group) pick.getRoot()).getChildren().add(vbox);
-        theStage.setScene(pick);
+        
+        
         theStage.show();
         
         
     }
+    
+    
+    
+    
+    //Andere Methoden
+    
+    HashMap generate(String name) throws FileNotFoundException, IOException {
+        HashMap<Image, String> hm = new HashMap<Image, String>();
+        File f = new File(name + "/list");
+        FileReader fr = new FileReader(f);
+        BufferedReader bfr = new BufferedReader(fr);
+        String text = bfr.readLine();
+        while (text != null || text != "") {
+            String[] teile = text.split("|");
+            Image img = new Image(name + "/" + teile[0]);
+            String resttext = "";
+            for (int i = teile.length; i > 0; i--) {
+                resttext += teile[i] + "|";
+            }
+            hm.put(img, resttext);
+            text = bfr.readLine();
+        }
+        
+        
+        
+        return hm;
+    }
+    
+    ArrayList namen() throws FileNotFoundException, IOException{
+        ArrayList<String> namen = new ArrayList<>();
+        File f = new File("kathegorien/kathegorien");
+        FileReader fr = new FileReader(f);
+        BufferedReader bfr = new BufferedReader(fr);
+        String text = bfr.readLine();
+        while (text != null || text != "") {
+            namen.add(text);
+            text = bfr.readLine();
+        }
+        
+        return namen;
+    }
+    
     
 }
