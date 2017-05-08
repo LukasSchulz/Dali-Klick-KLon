@@ -9,11 +9,9 @@ package was.bin.ich;
  *
  * @author ed.zhang
  */
-import javafx.scene.image.*;
 import java.util.Random;
 
 public class SpielVerwalter {
-    Image tile = new Image("link");
     private boolean Tiles [][] = new boolean [6][5];
     private Random r = new Random();
     
