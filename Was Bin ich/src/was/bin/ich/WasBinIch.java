@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
@@ -73,12 +76,15 @@ public class WasBinIch extends Application {
     
     public void loadArray(Stage theStage) throws FileNotFoundException, IOException{
         
-        Scene pick = new Scene(new Group());
+        
         /**
          * Hab was mit ner Table ausprobiert
          * hat nicht funktioniert
-         * Jetzt mach ich ne Menulist
+         * Jetzt mach ich ne MenuButton
          */
+        
+        MenuButton menu;
+        ArrayList<MenuItem> kategorien = new ArrayList<>();
         
         
         //sorry für die lokale Variable, wollte aber etwas testen......
@@ -87,10 +93,19 @@ public class WasBinIch extends Application {
         BufferedReader bfr = new BufferedReader(fr);
         String text = bfr.readLine();
         while(text!=""&&text!=null){
-            
+            kategorien.add(new MenuItem(text));
             text = bfr.readLine();
         }
         
+        Iterator<MenuItem> kategorienIter = kategorien.iterator();
+        MenuItem [] kath = new MenuItem [kategorien.size()];
+        int zaeler = 0;
+        while(kategorienIter.hasNext()){
+            kath[zaeler]=kategorienIter.next();
+            zaeler ++;
+        }
+        
+        menu = new MenuButton("Kategorien",null,kath);
         
         
         theStage.show();
@@ -138,6 +153,9 @@ public class WasBinIch extends Application {
         
         return namen;
     }
+    
+    
+    
     
     
 }
