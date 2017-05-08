@@ -28,6 +28,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -45,12 +46,7 @@ public class WasBinIch extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         loadArray(primaryStage);
-        Group root = new Group();
-        Scene theScene = new Scene(root);
-        primaryStage.setScene(theScene);
-        Canvas canvas = new Canvas(1000,500);
-        root.getChildren().add(canvas);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        
         primaryStage.show();
         
         
@@ -77,6 +73,7 @@ public class WasBinIch extends Application {
     public void loadArray(Stage theStage) throws FileNotFoundException, IOException{
         
         
+        
         /**
          * Hab was mit ner Table ausprobiert
          * hat nicht funktioniert
@@ -88,6 +85,8 @@ public class WasBinIch extends Application {
         
         
         //sorry für die lokale Variable, wollte aber etwas testen......
+        //temporär fehlt hier die ganze logik wegen einem zugriffsfehler
+        /**
         File f = new File("/src/kathegorien/kathegorien");
         if(!f.exists()){
             f.mkdirs();
@@ -108,12 +107,46 @@ public class WasBinIch extends Application {
             kath[zaeler]=kategorienIter.next();
             zaeler ++;
         }
+        * **/
         
+        //testlogikersatz
+        MenuItem [] kath = new MenuItem[3];
+        kath[0]=new MenuItem("Kategorie 1");
+        kath[1]=new MenuItem("Kategorie 2");
+        kath[2]=new MenuItem("Kategorie 3");
+        
+        
+       
         menu = new MenuButton("Kategorien",null,kath);
-        
+        HBox hBox = new HBox(menu);
+        Scene pick = new Scene(hBox,200,200);
+        theStage.setScene(pick);
         
         theStage.show();
         
+        kath[0].setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){        
+                System.out.println("Kategorie 1 ausgewählt");
+                menu.setText("Kategorie 1");
+            }
+        });
+        
+        kath[1].setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){        
+                System.out.println("Kategorie 2 ausgewählt");
+                menu.setText("Kategorie 2");
+            }
+        });
+        
+        kath[2].setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){        
+                System.out.println("Kategorie 3 ausgewählt");
+                menu.setText("Kategorie 3");
+            }
+        });
         
     }
     
@@ -157,6 +190,8 @@ public class WasBinIch extends Application {
         
         return namen;
     }
+    
+    
     
     
     
