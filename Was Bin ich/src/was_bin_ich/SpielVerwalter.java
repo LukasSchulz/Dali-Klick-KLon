@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package was.bin.ich;
+package was_bin_ich;
 
 /**
  *
@@ -12,7 +12,7 @@ package was.bin.ich;
 import java.util.Random;
 
 public class SpielVerwalter {
-    private boolean Tiles [][] = new boolean [6][5];
+    public boolean Tiles [][] = new boolean [6][5];
     private Random r = new Random();
     
     public SpielVerwalter(){
