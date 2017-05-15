@@ -50,7 +50,7 @@ public class WasBinIch extends Application {
     HashMap<ImageView,String> bildHm = new HashMap<ImageView, String>();
     Random random = new Random();
     String kategorieName = "flaggen";
-    private SpielVerwalter sv = new SpielVerwalter();
+    private TileVerwalter tv = new TileVerwalter(256,180,"resources/tile.png",20,40);
     private String loesung = "";
     private int counter = 0;
     private int punkte = 100;
@@ -302,11 +302,25 @@ public class WasBinIch extends Application {
         });
         
         
-        
+        nextTile.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+            
+            }
+        });
         
         
         
     }
+
+        
+        
+        
+        
+        
+        
+    
     
     
     
