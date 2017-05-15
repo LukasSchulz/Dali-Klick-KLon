@@ -12,7 +12,7 @@ package was_bin_ich;
 import java.util.Random;
 
 public class SpielVerwalter {
-    public boolean Tiles [][] = new boolean [6][5];
+    public boolean Tiles [][] = new boolean [5][4];
     private Random r = new Random();
     
     public SpielVerwalter(){
