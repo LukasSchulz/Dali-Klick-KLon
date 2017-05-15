@@ -37,4 +37,8 @@ public class TileVerwalter {
         sw.SelectRandomTile();
         return Tiles[sw.getLastX()][sw.getLastY()];
     }
+    
+    public ImageView[][] getImgVArray(){
+        return Tiles;
+    }
 }
