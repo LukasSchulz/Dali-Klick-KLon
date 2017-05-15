@@ -50,7 +50,7 @@ public class WasBinIch extends Application {
     HashMap<ImageView,String> bildHm = new HashMap<ImageView, String>();
     Random random = new Random();
     String kategorieName = "flaggen";
-    private TileVerwalter tv = new TileVerwalter(256,180,"resources/tile.png",20,40);
+    private TileVerwalter tv = new TileVerwalter(256,180,"src/resources/tile.png",20,20);
     private String loesung = "";
     private int counter = 0;
     private int punkte = 100;
@@ -261,7 +261,7 @@ public class WasBinIch extends Application {
                 theStage.setX(100);
                 theStage.setY(100);
                 theStage.setHeight(900);
-                theStage.setWidth(1320);
+                theStage.setWidth(1500);
                 root.getChildren().add(textField);
                 root.getChildren().add(nextTile);
                 root.getChildren().add(counterLabel);
@@ -298,6 +298,18 @@ public class WasBinIch extends Application {
                     if(!bildListe){
                         counter+=punkte;
                     }
+                    
+                    //schleife zum Tile Hinzufügen
+                ImageView [] [] temp = tv.getImgVArray();
+                
+                for(int i = 0; i<temp.length;i++){
+                    for(int j = 0; j<temp[0].length;j++){
+                        File file = new File("src/resources/tile.png");
+                        Image image = new Image(file.toURI().toString());
+                        temp[i][j].setImage(image);
+                    }
+                }
+                    
                     tempImgView.setImage(getRandomImage().getImage());
                     
                     counterLabel.setText("Score: "+counter);
@@ -305,6 +317,7 @@ public class WasBinIch extends Application {
                         counterLabel.setText(counterLabel.getText()+" Sorry, keine weiteren Bilder mehr verfügbar");
                     }
                     punkte = 100;
+                    
                     System.out.println("Richtig");
                 }
                 else{
@@ -312,6 +325,7 @@ public class WasBinIch extends Application {
                         punkte-=10;
                     }
                 }
+                textField.setText("");
                 System.out.println("EnterDetected");
             }
         });
@@ -321,7 +335,9 @@ public class WasBinIch extends Application {
 
             @Override
             public void handle(ActionEvent event) {
-            
+                File file = new File("src/resources/tile2.png");
+                Image image = new Image(file.toURI().toString());
+                tv.OnButtonPress().setImage(image);
             }
         });
         
