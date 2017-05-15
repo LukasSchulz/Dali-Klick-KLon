@@ -319,6 +319,7 @@ public class WasBinIch extends Application {
                     punkte = 100;
                     
                     System.out.println("Richtig");
+                    tv.reset();
                 }
                 else{
                     if(punkte>=0){

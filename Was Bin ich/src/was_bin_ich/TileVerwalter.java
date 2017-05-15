@@ -41,4 +41,8 @@ public class TileVerwalter {
     public ImageView[][] getImgVArray(){
         return Tiles;
     }
+    
+    public void reset(){
+        sw.reset();
+    }
 }

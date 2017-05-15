@@ -48,13 +48,7 @@ public class SpielVerwalter {
         return swTiles;
     }
     
-    public void Reset(){
-        for(int i = 0; i<swTiles.length; i++){
-            for(int j=0; j<swTiles[0].length; j++){
-                swTiles[i][j] = true;
-            }
-        }
-    }
+    
     
     public int getLastX(){
         return lastx;
@@ -62,6 +56,14 @@ public class SpielVerwalter {
     
     public int getLastY(){
         return lasty;
+    }
+    
+    public void reset(){
+        for(int i = 0; i<swTiles.length; i++){
+            for(int j = 0; j<swTiles[0].length; j++){
+                swTiles[i][j] = true;
+            }
+        }
     }
     
 }
