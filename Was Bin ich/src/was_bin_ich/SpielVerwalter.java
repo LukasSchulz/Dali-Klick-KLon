@@ -12,37 +12,56 @@ package was_bin_ich;
 import java.util.Random;
 
 public class SpielVerwalter {
-    public boolean Tiles [][] = new boolean [5][4];
+    public boolean[][] swTiles = new boolean [5][4];
     private Random r = new Random();
+    private int lastx;
+    private int lasty;
     
     public SpielVerwalter(){
-        for(int i = 0; i<Tiles.length; i++){
-            for(int j = 0; j<Tiles[0].length; j++){
-                Tiles[i][j] = true;
+        for(int i = 0; i<swTiles.length; i++){
+            for(int j = 0; j<swTiles[0].length; j++){
+                swTiles[i][j] = true;
             }
         }
     }
     
     public void SelectRandomTile(){
+        int counter = 0;
         boolean con = true;
         while(con == true){
-            if(Tiles[r.nextInt(Tiles.length)][r.nextInt(Tiles[0].length)] == true){
-               Tiles[r.nextInt(Tiles.length)][r.nextInt(Tiles[0].length)] = false;
+            int tempx = r.nextInt(swTiles.length);
+            int tempy = r.nextInt(swTiles[0].length);
+            if(swTiles[tempx][tempy] == true){
+               swTiles[tempx][tempy] = false;
+               lastx = tempx;
+               lasty = tempy;
                con = false;
+            }
+            counter++;
+            if(counter>19){
+                con = false;
             }
         }
     }
     
     public boolean[][] Abfrage(){
-        return Tiles;
+        return swTiles;
     }
     
     public void Reset(){
-        for(int i = 0; i<Tiles.length; i++){
-            for(int j=0; j<Tiles[0].length; j++){
-                Tiles[i][j] = true;
+        for(int i = 0; i<swTiles.length; i++){
+            for(int j=0; j<swTiles[0].length; j++){
+                swTiles[i][j] = true;
             }
         }
+    }
+    
+    public int getLastX(){
+        return lastx;
+    }
+    
+    public int getLastY(){
+        return lasty;
     }
     
 }

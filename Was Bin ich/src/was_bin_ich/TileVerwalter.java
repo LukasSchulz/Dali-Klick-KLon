@@ -16,20 +16,25 @@ import javafx.scene.image.Image;
 public class TileVerwalter {
     private int xAbstand;
     private int yAbstand;
-    private ImageView [][] tiles = new ImageView [5][4];
+    private ImageView [][] Tiles = new ImageView [5][4];
     private SpielVerwalter sw = new SpielVerwalter();
     
-    public TileVerwalter(int x, int y, String path){
+    public TileVerwalter(int x, int y, String path, int xRand, int yRand){
         xAbstand = x;
         yAbstand = y;
         File file = new File(path);
         Image image = new Image(file.toURI().toString());
-        for(int i = 0; i<tiles.length; i++){
-            for(int j = 0; j<tiles[0].length; j++){
-                tiles[i][j] = new ImageView(image);
+        for(int i = 0; i<Tiles.length; i++){
+            for(int j = 0; j<Tiles[0].length; j++){
+                Tiles[i][j] = new ImageView(image);
+                Tiles[i][j].setTranslateX(xAbstand*i+xRand);
+                Tiles[i][j].setTranslateY(yAbstand*j+yRand);
             }
         }
     }
     
-    
+    public ImageView OnButtonPress(){
+        sw.SelectRandomTile();
+        return Tiles[sw.getLastX()][sw.getLastY()];
+    }
 }
