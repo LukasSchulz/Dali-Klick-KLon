@@ -55,6 +55,8 @@ public class WasBinIch extends Application {
     private int counter = 0;
     private int punkte = 100;
     private ImageView tempImgView;
+    private boolean bildListe = false;
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -254,7 +256,6 @@ public class WasBinIch extends Application {
             public void handle(ActionEvent event){
                 
                 
-                
                 root.getChildren().remove(menu);
                 root.getChildren().remove(setKat);
                 theStage.setX(100);
@@ -273,6 +274,16 @@ public class WasBinIch extends Application {
                     System.out.println("File not found");
                 }
                 
+                //schleife zum Tile Hinzufügen
+                ImageView [] [] temp = tv.getImgVArray();
+                
+                for(int i = 0; i<temp.length;i++){
+                    for(int j = 0; j<temp[0].length;j++){
+                        root.getChildren().add(temp[i][j]);
+                    }
+                }
+                
+                
                 
                 
                 
@@ -284,11 +295,15 @@ public class WasBinIch extends Application {
             @Override
             public void handle(ActionEvent event){
                 if(textField.getText().toLowerCase().contains(loesung.toLowerCase())){
-                    counter+=punkte;
-                    root.getChildren().remove(tempImgView);
-                    tempImgView = getRandomImage();
-                    root.getChildren().add(tempImgView);
+                    if(!bildListe){
+                        counter+=punkte;
+                    }
+                    tempImgView.setImage(getRandomImage().getImage());
+                    
                     counterLabel.setText("Score: "+counter);
+                    if(bildListe){
+                        counterLabel.setText(counterLabel.getText()+" Sorry, keine weiteren Bilder mehr verfügbar");
+                    }
                     punkte = 100;
                     System.out.println("Richtig");
                 }
@@ -384,7 +399,9 @@ public class WasBinIch extends Application {
     }
     
     public ImageView getRandomImage(){
+        if(!(bildHm.size()<=0)){
         int index = random.nextInt(bildHm.size());
+                
         index-=1;
         Set<ImageView> tempSet = bildHm.keySet();
         Iterator<ImageView> tempIter = tempSet.iterator();
@@ -392,7 +409,18 @@ public class WasBinIch extends Application {
             tempIter.next();
             index--;
         }
-        return tempIter.next();
+        
+        ImageView temp = tempIter.next();
+        loesung = bildHm.get(temp);
+        bildHm.remove(temp);
+        return temp;
+        }
+        else{
+            ImageView temp = tempImgView;
+            bildListe = true;
+            return temp;
+        }
+        
     }
     
     
