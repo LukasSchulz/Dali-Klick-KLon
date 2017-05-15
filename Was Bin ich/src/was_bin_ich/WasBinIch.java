@@ -325,9 +325,9 @@ public class WasBinIch extends Application {
                 img.createNewFile();
             }
             
-            
-            
-            ImageView imgv = new ImageView(path+"/"+fileName+".png");
+            File file = new File(path+"/"+fileName+".png");
+            Image image = new Image(file.toURI().toString());
+            ImageView imgv = new ImageView(image);
             imgv.setTranslateX(20);
             imgv.setTranslateY(20);
             hm.put(imgv, fileName);
