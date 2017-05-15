@@ -38,6 +38,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Label;
 
 
 /**
@@ -50,7 +51,10 @@ public class WasBinIch extends Application {
     Random random = new Random();
     String kategorieName = "flaggen";
     private SpielVerwalter sv = new SpielVerwalter();
-    
+    private String loesung = "";
+    private int counter = 0;
+    private int punkte = 100;
+    private ImageView tempImgView;
     
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -153,15 +157,18 @@ public class WasBinIch extends Application {
         
         TextField textField = new TextField();
         textField.setPromptText("Das Lösungswort hier eintippen.");
-        textField.setMinWidth(300);
-        textField.setMaxWidth(300);
-        textField.setLayoutX(10);
-        textField.setLayoutY(200);
+        textField.setMinWidth(500);
+        textField.setMaxWidth(500);
+        textField.setLayoutX(20);
+        textField.setLayoutY(760);
         
         Button nextTile = new Button("Nächtes Feld aufdecken");
-        nextTile.setLayoutX(320);
-        nextTile.setLayoutY(200);
+        nextTile.setLayoutX(530);
+        nextTile.setLayoutY(760);
         
+        Label counterLabel = new Label("Score: ");
+        counterLabel.setTranslateX(700);
+        counterLabel.setTranslateY(760);
         
         root.getChildren().add(menu);
         
@@ -247,18 +254,21 @@ public class WasBinIch extends Application {
             public void handle(ActionEvent event){
                 
                 
-                canvas.setScaleX(720);
-                canvas.setScaleY(400);
+                
                 root.getChildren().remove(menu);
                 root.getChildren().remove(setKat);
-                theStage.setHeight(400);
-                theStage.setWidth(720);
+                theStage.setX(100);
+                theStage.setY(100);
+                theStage.setHeight(900);
+                theStage.setWidth(1320);
                 root.getChildren().add(textField);
                 root.getChildren().add(nextTile);
+                root.getChildren().add(counterLabel);
                 
                 try {
                     bildHm = makeHM("src/"+kategorieName, getArrayListfromFile("src/"+kategorieName, "bilder"));
-                    root.getChildren().add(getRandomImage());
+                    tempImgView = getRandomImage();
+                    root.getChildren().add(tempImgView);
                 } catch (IOException ex) {
                     System.out.println("File not found");
                 }
@@ -267,6 +277,27 @@ public class WasBinIch extends Application {
                 
                 
                 
+            }
+        });
+        
+        textField.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                if(textField.getText().toLowerCase().contains(loesung.toLowerCase())){
+                    counter+=punkte;
+                    root.getChildren().remove(tempImgView);
+                    tempImgView = getRandomImage();
+                    root.getChildren().add(tempImgView);
+                    counterLabel.setText("Score: "+counter);
+                    punkte = 100;
+                    System.out.println("Richtig");
+                }
+                else{
+                    if(punkte>=0){
+                        punkte-=10;
+                    }
+                }
+                System.out.println("EnterDetected");
             }
         });
         
@@ -326,7 +357,8 @@ public class WasBinIch extends Application {
             }
             
             File file = new File(path+"/"+fileName+".png");
-            Image image = new Image(file.toURI().toString());
+            loesung = fileName;
+            Image image = new Image(file.toURI().toString(),1280, 720, true, false);
             ImageView imgv = new ImageView(image);
             imgv.setTranslateX(20);
             imgv.setTranslateY(20);
