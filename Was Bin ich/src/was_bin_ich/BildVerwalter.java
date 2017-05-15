@@ -5,6 +5,7 @@
  */
 package was_bin_ich;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javafx.scene.image.Image;
@@ -22,7 +23,9 @@ public class BildVerwalter {
     private int yAbstand;
     
     public BildVerwalter(ArrayList<String> bilderNamen,String path, String tilePath, int xAbstand, int yAbstand){
-        tile = new ImageView(new Image(tilePath));
+        File file = new File(tilePath);
+        Image image = new Image(file.toURI().toString());
+        tile = new ImageView(image);
         BilderLaden(bilderNamen, path);
         this.xAbstand = xAbstand;
         this.yAbstand = yAbstand;
@@ -35,7 +38,9 @@ public class BildVerwalter {
         bilder = new ImageView [bilderNamen.size()];
         
         for(int i = 0; bilderNamenIter.hasNext(); i++){
-            bilder[i] = new ImageView(new Image("src/"+path+"/"+bilderNamenIter.next()));
+            File file = new File("src/"+path+"/"+bilderNamenIter.next());
+            Image image = new Image(file.toURI().toString());
+            bilder[i] = new ImageView(image);
         }
     }
     
