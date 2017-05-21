@@ -153,6 +153,11 @@ public class WasBinIch extends Application {
         setKat.setTranslateY(20);
         root.getChildren().add(setKat);
         
+        Button helpButton = new Button("Hilfe");
+        helpButton.setTranslateX(150);
+        helpButton.setTranslateY(20);
+        root.getChildren().add(helpButton);
+        
         menu = new MenuButton("Kategorien",null,kath);
         menu.setTranslateX(10);
         menu.setTranslateY(20);
@@ -290,6 +295,53 @@ public class WasBinIch extends Application {
                 
             }
         });
+        
+        Label hilfe = new Label("Hier das Spielprinzip:\n"
+                + "Zuerst wird eine Kategorie gewählt.\n"
+                + "Danach wird ein zufällig ausgewähltes Bild\n"
+                + "dieser Katergorie verdeckt unter \"Karten\"\n"
+                + "angezeigt.\n"
+                + "Deine Aufgabe ist es nun das Objekt auf dem\n"
+                + "Bild zu erraten und dabei möglichst wenige\n"
+                + "Karten aufzudecken.\n"
+                + "Je weniger Karten umso mehr Punkte.");
+        hilfe.setTranslateX(10);
+        hilfe.setTranslateY(10);
+        Button closeHelpButton = new Button("Schließen");
+        closeHelpButton.setTranslateX(100);
+        closeHelpButton.setTranslateY(200);
+        
+        
+        helpButton.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                root.getChildren().remove(menu);
+                root.getChildren().remove(setKat);
+                root.getChildren().remove(helpButton);
+                root.getChildren().add(closeHelpButton);
+                root.getChildren().add(hilfe);
+                theStage.setHeight(280);
+                theStage.setWidth(300);
+                
+                
+            }
+        });
+        
+        
+        closeHelpButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                root.getChildren().add(menu);
+                root.getChildren().add(setKat);
+                root.getChildren().add(helpButton);
+                root.getChildren().remove(closeHelpButton);
+                root.getChildren().remove(hilfe);
+                theStage.setHeight(100);
+                
+                        
+           }
+        });
+        
         
         textField.setOnAction(new EventHandler <ActionEvent>(){
             @Override
