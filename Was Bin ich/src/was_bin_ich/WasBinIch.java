@@ -391,6 +391,9 @@ public class WasBinIch extends Application {
                 File file = new File("src/resources/tile2.png");
                 Image image = new Image(file.toURI().toString());
                 tv.OnButtonPress().setImage(image);
+                if(punkte>=0){
+                        punkte-=10;
+                    }
             }
         });
         
