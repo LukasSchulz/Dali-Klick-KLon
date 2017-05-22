@@ -392,7 +392,7 @@ public class WasBinIch extends Application {
                 Image image = new Image(file.toURI().toString());
                 tv.OnButtonPress().setImage(image);
                 if(punkte>=0){
-                        punkte-=10;
+                        punkte-=5;
                     }
             }
         });
