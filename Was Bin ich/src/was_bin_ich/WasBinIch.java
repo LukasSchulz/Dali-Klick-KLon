@@ -142,12 +142,16 @@ public class WasBinIch extends Application {
         nextTile.setLayoutY(760);
 
         Label counterLabel = new Label("Score: ");
-        counterLabel.setTranslateX(700);
+        counterLabel.setTranslateX(850);
         counterLabel.setTranslateY(760);
 
         Label progress = new Label("");
         progress.setTranslateX(1300);
         progress.setTranslateY(20);
+        
+        Button backToMenuButton = new Button("Zurück zum Menü");
+        backToMenuButton.setLayoutX(700);
+        backToMenuButton.setLayoutY(760);
 
         root.getChildren().add(menu);
 
@@ -234,6 +238,7 @@ public class WasBinIch extends Application {
 
                 root.getChildren().remove(menu);
                 root.getChildren().remove(setKat);
+                root.getChildren().remove(helpButton);
                 theStage.setX(100);
                 theStage.setY(100);
                 theStage.setHeight(900);
@@ -242,6 +247,7 @@ public class WasBinIch extends Application {
                 root.getChildren().add(nextTile);
                 root.getChildren().add(counterLabel);
                 root.getChildren().add(progress);
+                root.getChildren().add(backToMenuButton);
 
                 try {
                     bildHm = makeHM("src/" + kategorieName, getArrayListfromFile("src/" + kategorieName, "bilder"));
@@ -277,6 +283,32 @@ public class WasBinIch extends Application {
 
             }
         });
+        
+        
+        backToMenuButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                counter = 0;
+                
+                root.getChildren().clear();
+                
+                root.getChildren().add(menu);
+                root.getChildren().add(setKat);
+                root.getChildren().add(helpButton);
+                theStage.setHeight(100);
+                theStage.setWidth(300);
+                theStage.setX(400);
+                theStage.setY(400);
+                
+                
+            }
+        });
+        
+        
+        
+        
+        
 
         Label hilfe = new Label("Hier das Spielprinzip:\n"
                 + "Zuerst wird eine Kategorie gewählt.\n"
