@@ -141,7 +141,7 @@ public class WasBinIch extends Application {
         nextTile.setLayoutX(530);
         nextTile.setLayoutY(760);
 
-        Label counterLabel = new Label("Score: ");
+        Label counterLabel = new Label("Score: 0");
         counterLabel.setTranslateX(850);
         counterLabel.setTranslateY(760);
 
@@ -301,6 +301,11 @@ public class WasBinIch extends Application {
                 theStage.setX(400);
                 theStage.setY(400);
                 
+                counterLabel.setText("Score: 0");
+                
+                bildListe = false;
+                
+                
                 
             }
         });
@@ -375,7 +380,7 @@ public class WasBinIch extends Application {
 
                     counterLabel.setText("Score: " + counter);
                     if (bildListe) {
-                        counterLabel.setText(counterLabel.getText() + " Sorry, keine weiteren Bilder mehr verfügbar");
+                        counterLabel.setText(counterLabel.getText() + "   Sorry, keine weiteren Bilder mehr verfügbar");
                     }
                     punkte = 100;
 
