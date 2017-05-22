@@ -290,6 +290,7 @@ public class WasBinIch extends Application {
             @Override
             public void handle(ActionEvent event) {
                 counter = 0;
+                anzProgress = 0;
                 
                 root.getChildren().clear();
                 
