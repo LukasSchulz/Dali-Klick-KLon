@@ -14,35 +14,36 @@ import javafx.scene.image.Image;
  * @author ed.zhang
  */
 public class TileVerwalter {
+
     private int xAbstand;
     private int yAbstand;
-    private ImageView [][] Tiles = new ImageView [5][4];
+    private ImageView[][] Tiles = new ImageView[5][4];
     private SpielVerwalter sw = new SpielVerwalter();
-    
-    public TileVerwalter(int x, int y, String path, int xRand, int yRand){
+
+    public TileVerwalter(int x, int y, String path, int xRand, int yRand) {
         xAbstand = x;
         yAbstand = y;
         File file = new File(path);
         Image image = new Image(file.toURI().toString());
-        for(int i = 0; i<Tiles.length; i++){
-            for(int j = 0; j<Tiles[0].length; j++){
+        for (int i = 0; i < Tiles.length; i++) {
+            for (int j = 0; j < Tiles[0].length; j++) {
                 Tiles[i][j] = new ImageView(image);
-                Tiles[i][j].setTranslateX(xAbstand*i+xRand);
-                Tiles[i][j].setTranslateY(yAbstand*j+yRand);
+                Tiles[i][j].setTranslateX(xAbstand * i + xRand);
+                Tiles[i][j].setTranslateY(yAbstand * j + yRand);
             }
         }
     }
-    
-    public ImageView OnButtonPress(){
+
+    public ImageView OnButtonPress() {
         sw.SelectRandomTile();
         return Tiles[sw.getLastX()][sw.getLastY()];
     }
-    
-    public ImageView[][] getImgVArray(){
+
+    public ImageView[][] getImgVArray() {
         return Tiles;
     }
-    
-    public void reset(){
+
+    public void reset() {
         sw.reset();
     }
 }
