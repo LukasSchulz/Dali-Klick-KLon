@@ -101,7 +101,7 @@ public class WasBinIch extends Application {
         * *
          */
         //testlogikersatz
-        MenuItem[] kath = new MenuItem[8];
+        MenuItem[] kath = new MenuItem[9];
         kath[0] = new MenuItem("Flaggen");
         kath[1] = new MenuItem("Marken");
         kath[2] = new MenuItem("Skylines");
@@ -110,6 +110,7 @@ public class WasBinIch extends Application {
         kath[5] = new MenuItem("Sportler");
         kath[6] = new MenuItem("Wahrzeichen/Städte");
         kath[7] = new MenuItem("Cartoon Figuren");
+        kath[8] = new MenuItem("Fußballer");
         /**
          * Kategorien: Flaggen Marken Skylines Schauspieler Schauspielerinnen
          * Sportler Wahrzeichen/Städte Cartoon Figuren
@@ -229,6 +230,15 @@ public class WasBinIch extends Application {
                 kategorieName = "cartoon";
                 System.out.println("Cartoon Figuren ausgewählt");
                 menu.setText("Cartoon Figuren");
+            }
+        });
+        
+        kath[8].setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                kategorieName = "fussballer";
+                System.out.println("Fußballer ausgewählt");
+                menu.setText("Fußballer");
             }
         });
 
