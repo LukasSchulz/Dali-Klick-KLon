@@ -317,14 +317,15 @@ public class WasBinIch extends Application {
         
 
         Label hilfe = new Label("Hier das Spielprinzip:\n"
-                + "Zuerst wird eine Kategorie gewählt.\n"
+                + "Zuerst wählt ihr eine Kategorie aus.\n"
                 + "Danach wird ein zufällig ausgewähltes Bild\n"
-                + "dieser Katergorie verdeckt unter \"Karten\"\n"
-                + "angezeigt.\n"
-                + "Deine Aufgabe ist es nun das Objekt auf dem\n"
+                + "aus dieser Katergorie verdeckt unter\n"
+                + "\"Karten\" angezeigt.\n"
+                + "Deine Aufgabe ist es nun, das Objekt auf dem\n"
                 + "Bild zu erraten und dabei möglichst wenige\n"
                 + "Karten aufzudecken.\n"
-                + "Je weniger Karten umso mehr Punkte.");
+                + "Je weniger Karten umso mehr Punkte.\n"
+                + "Raten wird bestraft!");
         hilfe.setTranslateX(10);
         hilfe.setTranslateY(10);
         Button closeHelpButton = new Button("Schließen");
