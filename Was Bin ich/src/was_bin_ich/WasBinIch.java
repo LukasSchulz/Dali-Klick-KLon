@@ -384,7 +384,21 @@ public class WasBinIch extends Application {
                     if (!bildListe) {
                         counter += punkte;
                     }
-
+                    tv.aufdecken();
+                    ImageView[][] temp1 = tv.getImgVArray();
+                for (int i = 0; i < temp1.length; i++) {
+                        for (int j = 0; j < temp1[0].length; j++) {
+                            File file = new File("src/resources/tile2.png");
+                            Image image = new Image(file.toURI().toString());
+                            temp1[i][j].setImage(image);
+                        }
+                    }
+                   
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(WasBinIch.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     //schleife zum Tile Hinzufügen
                     ImageView[][] temp = tv.getImgVArray();
 

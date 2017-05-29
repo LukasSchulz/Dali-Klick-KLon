@@ -46,4 +46,8 @@ public class TileVerwalter {
     public void reset() {
         sw.reset();
     }
+    
+    public void aufdecken() {
+        sw.aufdecken();
+    }
 }

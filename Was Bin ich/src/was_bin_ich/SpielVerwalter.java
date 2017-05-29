@@ -64,5 +64,13 @@ public class SpielVerwalter {
             }
         }
     }
+    
+    public void aufdecken(){
+        for (int i = 0; i < swTiles.length; i++) {
+            for (int j = 0; j < swTiles[0].length; j++) {
+                swTiles[i][j] = false;
+            }
+        }
+    }
 
 }
