@@ -301,7 +301,15 @@ public class WasBinIch extends Application {
             public void handle(ActionEvent event) {
                 counter = 0;
                 anzProgress = 0;
-                
+                tv.reset();
+                ImageView[][] temp = tv.getImgVArray();
+                for (int i = 0; i < temp.length; i++) {
+                        for (int j = 0; j < temp[0].length; j++) {
+                            File file = new File("src/resources/tile.png");
+                            Image image = new Image(file.toURI().toString());
+                            temp[i][j].setImage(image);
+                        }
+                    }
                 root.getChildren().clear();
                 
                 root.getChildren().add(menu);
